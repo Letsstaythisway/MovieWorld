@@ -6,3 +6,8 @@
 nav {
     background: rgba(0, 0,0 , 250);
 }
+
+.hero {
+    position: relative;
+    height: 80vh;
+}
