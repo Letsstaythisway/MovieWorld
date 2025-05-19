@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { MovieCard } from './MovieCard';
+import { fetchFromAPI } from '../utils/axios';
+import { randomChar } from '../utils/random';
 
 export const  Hero= () => {
+
+    const [searchedMovie, setSearchedMovie] = useState({})
+useEffect (() => {
+fetchMovie(randomChar())
+}, [])
+
+
+const fetchMovie = async str => {
+    const movie = await fetchFromAPI(str);
+    setSearchedMovie(movie);
+}
+
+
     const movieStyle = {
         backgroundImage : `URL("https://www.omdbapi.com/src/poster.jpg")`,
         backgroundRepeat: "no-repeat",
@@ -40,7 +55,7 @@ export const  Hero= () => {
             </div>
 
             <div className="movie-card-display">
-                <MovieCard/>
+                <MovieCard searchedMovie={searchedMovie}/>
             </div>
              </div>
         </div>
@@ -48,4 +63,4 @@ export const  Hero= () => {
 
     </div>
   )
-};
+}
