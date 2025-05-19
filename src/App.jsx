@@ -1,6 +1,17 @@
+import { Hero } from "./components/Hero"
+import { Display } from "./components/Display"
+import { MovieCard } from "./components/MovieCard"
+
 function App () {
   return (
-   <div> Hello this is my first page</div>
+   <div className="wrapper"> 
+   {/*hero Section */}
+   <Hero/>
+   {/*display section Section */}
+   <Display/>
+
+    </div>
+   
   )
 }
 
