@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const MovieCard = ({searchedMovie}) => {
+export const MovieCard = ({searchedMovie, deleteFunc}) => {
 
 
     const {Poster, Title, imdbRating, Plot} = searchedMovie
@@ -22,7 +22,7 @@ export const MovieCard = ({searchedMovie}) => {
                 </button>
                 </div>
                 <div className='d-grid mt-3'>
-                    <button className="btn btn-danger">Action</button>
+                    <button onClick={deleteFunc} className="btn btn-danger">Delete</button>
                 </div>
                 
             </div>

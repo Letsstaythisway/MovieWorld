@@ -9,7 +9,9 @@ export const  Hero= () => {
     const [bgImg, setBgImg] = useState("")
     const shouldFetchRef = useRef(true)
     const searchRef = useRef("")
-
+    const [searching, setSearching ] = 
+    useState(false);
+ 
 useEffect (() => {
     if (shouldFetchRef.current){
         
@@ -24,6 +26,12 @@ const fetchMovie = async str => {
     const movie = await fetchFromAPI(str);
     setSearchedMovie(movie);
     setBgImg(movie.Poster)
+    setSearching(false)
+}
+
+const handleOnDelete = () => {
+    setSearchedMovie ({})
+    setSearching(true)
 }
 
 
@@ -32,6 +40,8 @@ const handleOnMovieSearch = () => {
     fetchMovie (str);
     searchRef.current.value = ""
 }
+
+
 
     const movieStyle = {
         backgroundImage : `URL(${bgImg})`,
@@ -55,24 +65,33 @@ const handleOnMovieSearch = () => {
         <div className="hero d-flex justify-content-center align-items-center text-white
         " style={movieStyle}>
             <div className='hero-content'>
-            <div className="form-center">
+                <div className= {searching ? "form-center" : "form-top"}>
+                {searching && 
+                 
                 <div className="text-center">
                     <h1>Search Millions of Movies</h1>
                     <p>Find about the movie more in details before watching them online</p>
-                </div>
-            </div>
+                </div>}
+            
+            
            
 
             <div className="input-group mb-3 my-5">
-                <input ref={searchRef} type="text" className='form-control' placeholder='Search Movies' aria-label='Search Movies' aria-describedby='button-addon2' />
+                <input ref={searchRef}
+                onFocus={() => {setSearching(true)}} type="text" className='form-control' placeholder='Search Movies' aria-label='Search Movies' aria-describedby='button-addon2' />
                 <button onClick={handleOnMovieSearch} className='btn btn-danger' type='button' id='button-addon2'>
                   Search
                 </button>
             </div>
-
-            <div className="movie-card-display">
-                <MovieCard searchedMovie={searchedMovie}/>
             </div>
+
+
+{
+    !searching && (<div className="movie-card-display showMovie">
+                <MovieCard searchedMovie={searchedMovie} deleteFunc =  {handleOnDelete}/>
+            </div>)
+}
+            
              </div>
         </div>
 
