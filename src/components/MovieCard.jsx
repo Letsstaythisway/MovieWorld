@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const MovieCard = ({searchedMovie, deleteFunc}) => {
+export const MovieCard = ({searchedMovie, deleteFunc, handleOnAddToTheList}) => {
 
 
-    const {Poster, Title, imdbRating, Plot} = searchedMovie
-    
+    const {Poster, Title, imdbRating, Plot} = searchedMovie;
+    console.log(searchedMovie)
   return (
     <div className='container'>
         <div className="row border rounded text-dark p-2 movie-card-item">
@@ -14,10 +14,10 @@ export const MovieCard = ({searchedMovie, deleteFunc}) => {
             <p>imdb rating: {imdbRating}</p>
             <p>{Plot?.slice(0,50)}...</p>
             <div className='d-flex justify-content-between'>
-                <button className='btn btn-primary'>
+                <button className='btn btn-primary' onClick={()=>handleOnAddToTheList("Drama")}>
                     Drama
                 </button>
-                <button className='btn btn-danger'>
+                <button className='btn btn-danger' onClick={()=>handleOnAddToTheList("Action")}>
                     Action
                 </button>
                 </div>

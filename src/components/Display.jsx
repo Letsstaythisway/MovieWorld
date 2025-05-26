@@ -1,8 +1,9 @@
 import React from 'react'
 import { MovieCard } from './MovieCard'
 
-export const Display = () => (
-    <div className='container mt-5'>
+export const Display = ({movieList}) => {
+    console.log(movieList);
+    <div className='container mt-5 rounded'>
         <div className="bg-dark">
             <div className="row">
                 <div className="col">
@@ -16,11 +17,11 @@ export const Display = () => (
             </div>
             <div className="row mt-5">
                 <div className="col d-flex justify-content-around gap-2 flex-wrap">
-                    {new Array(10).fill("").map((item, i) =>
+                    {movieList.map((item, i) => (
                 <div className=""  key={i}>
-                     {/* <MovieCard/> */}
+                     <MovieCard searchedMovie={item}/>
                      </div>
-                     )}
+                     ))}
                        
                    
 
@@ -28,4 +29,5 @@ export const Display = () => (
             </div>
         </div>
     </div>
-)
+                   
+                    }
