@@ -41,12 +41,6 @@ const handleOnMovieSearch = () => {
     searchRef.current.value = ""
 }
 
-const handleOnAddToTheList = mood => {
-    addMovieToList({...searchedMovie, mood});
-     setSearchedMovie ({});
-    setSearching(true);
-}
-
 
 
     const movieStyle = {
