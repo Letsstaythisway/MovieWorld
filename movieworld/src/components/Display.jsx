@@ -12,14 +12,17 @@ export const Display = () => {
                     <button type="button" className='btn btn-info'>Action</button>
                     <button type="button" className='btn btn-warning'>Drama</button>
                     </div>
-                    <div className='mt-3 text-light'>2 movies found</div>
+                    <div className='mt-3 text-light m-4'>2 movies found</div>
                 </div>
             </div>
-            <div className="row mt-5">
-                <div className="col">
+            <div className="row mt-5 ">
+                <div className="col gap-2 d-flex flex-wrap justify-content-around">
                     {
-                        new Array(10).fill("".localeCompare((item,i) => 
-                         <MovieCard key={i}/>))
+                        new Array(10).fill("").map((item,i) =>  (
+                         <div className="m-3" key={i}>
+                            <MovieCard/> 
+                         </div> ))
+                         
                     }
                    
                 </div>
